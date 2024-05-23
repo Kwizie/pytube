@@ -111,7 +111,7 @@ def find_object_from_startpoint(html, start_point):
             # Non-string contexts are when we need to look for context openers.
             if curr_char in context_closers.keys():
                 # Slash starts a regular expression depending on context
-                if not (curr_char == '/' and last_char not in ['(', ',', '=', ':', '[', '!', '&', '|', '?', '{', '}', ';']): 
+                if not (curr_char == '/' and last_char not in ['(', ',', '=', ':', '[', '!', '&', '|', '?', '{', '}', ';']):
                     stack.append(curr_char)
 
         i += 1
@@ -156,7 +156,8 @@ def throttling_array_split(js_array):
     curr_substring = js_array[1:]
 
     comma_regex = re.compile(r",")
-    func_regex = re.compile(r"function\([^)]*\)")
+    # func_regex = re.compile(r"function\([^)]*\)")
+    func_regex = re.compile(r"function\([^)]?\)")
 
     while len(curr_substring) > 0:
         if curr_substring.startswith('function'):
